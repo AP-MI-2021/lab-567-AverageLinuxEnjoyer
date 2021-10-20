@@ -1,3 +1,6 @@
+from .expense import Expense
 
 class OwnersAssociation:
-    pass
+    
+    def __init__(self):
+        pass

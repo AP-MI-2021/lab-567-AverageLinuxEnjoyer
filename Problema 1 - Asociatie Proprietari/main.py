@@ -1,6 +1,7 @@
+from Tests.all_tests import run_tests
 
 def main():
-    pass
+    run_tests()
 
 if __name__ == "__main__":
     main()
