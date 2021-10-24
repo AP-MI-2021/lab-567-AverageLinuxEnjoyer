@@ -53,7 +53,7 @@ def adaugareVanzariRandom(nr: int, vanzari: list) -> list:
         pret_nou = randrange(10, 250)
         reducere_noua = choice(["none", "silver", "gold"])
 
-        adaugate = adaugareVanzare(id_nou, titlu_nou, gen_nou, pret_nou, reducere_noua, adaugate)
+        adaugate = adaugareVanzare(str(id_nou), titlu_nou, gen_nou, pret_nou, reducere_noua, adaugate)
 
         iduri_folosite.append(id_nou)
 

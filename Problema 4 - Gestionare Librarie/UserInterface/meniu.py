@@ -54,6 +54,8 @@ def runMenu(vanzari: list):
             vanzari = afisareTitluriDistinctePerGen(vanzari)
         elif optiune == "9":
             pass
+        elif optiune == "10":
+            pass
         elif optiune == "a":
             afisareaTututorVanzarilor(vanzari)
         elif optiune == "r":
@@ -63,16 +65,17 @@ def runMenu(vanzari: list):
 
 def printMeniu():
     print("""
-    (1) Adaugare vanzare.
-    (2) Stergere vanzare.
-    (3) Modificare vanzare.
-    (4) Aplicare discount tuturor vanzarilor. (5% pentru silver, 10% pentru gold)
-    (5) Modificarea genului pentru un titlu dat.
-    (6) Determinarea pretului minim pentru fiecare gen.
-    (7) Ordonarea crescatoare a vanzarilor, dupa pret.
-    (8) Afisarea numarului de titluri distincte pentru fiecare gen.
-    (9) Undo
-    (a) Afisarea tututor vanzarilor
-    (r) Adaugare vanzari random la lista. (ca sa va usurez viata)
-    (x) Iesire 
+    (1)  Adaugare vanzare.
+    (2)  Stergere vanzare.
+    (3)  Modificare vanzare.
+    (4)  Aplicare discount tuturor vanzarilor. (5% pentru silver, 10% pentru gold)
+    (5)  Modificarea genului pentru un titlu dat.
+    (6)  Determinarea pretului minim pentru fiecare gen.
+    (7)  Ordonarea crescatoare a vanzarilor, dupa pret.
+    (8)  Afisarea numarului de titluri distincte pentru fiecare gen.
+    (9)  Undo
+    (10) Redo
+    (a)  Afisarea tututor vanzarilor
+    (r)  Adaugare vanzari random la lista. (ca sa va usurez viata)
+    (x)  Iesire 
     """)
