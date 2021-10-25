@@ -79,12 +79,6 @@ def runMenu(vanzari: list):
             states.append(copy.copy(vanzari))
             index = len(states) - 1
             vanzari = states[-1]
-
-        if optiune == "s":
-            print("states: [",end="")
-            for version in states:
-                print(len(version), end=", ")
-            print("]")
                 
 
 def printMeniu():
