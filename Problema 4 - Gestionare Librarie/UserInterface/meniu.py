@@ -6,6 +6,7 @@ from Logic.pretMinim import pretMinimGen
 from Logic.ordonareVanzari import ordonareVanzari
 from Logic.titluriDistincte import titluriDistinctePerGen
 from Logic.adaugareVanzariRandom import adaugareVanzariRandom
+import copy
 
 def afisareaTututorVanzarilor(vanzari: list):
     for vanzare in vanzari:
@@ -32,6 +33,10 @@ def meniuModificareGen(vanzari: list):
     modificareGen(titlu, gen_nou, vanzari)
 
 def runMenu(vanzari: list):
+
+    states = [[]]
+    index = 0
+
     while True:
         printMeniu()
         optiune = input("Optiune: ")
@@ -51,17 +56,36 @@ def runMenu(vanzari: list):
         elif optiune == "7":
             vanzari = ordonareVanzari(vanzari)
         elif optiune == "8":
-            vanzari = afisareTitluriDistinctePerGen(vanzari)
-        elif optiune == "9":
-            pass
-        elif optiune == "10":
-            pass
+            afisareTitluriDistinctePerGen(vanzari)
+
+        elif optiune == "9":  # Undo
+            if index > 0:
+                index -= 1
+            vanzari = states[index]
+        elif optiune == "10": # Redo
+            if index < len(states) - 1:
+                index += 1
+            vanzari = states[index]
+                
         elif optiune == "a":
             afisareaTututorVanzarilor(vanzari)
         elif optiune == "r":
             vanzari = meniuAdaugareVanzariRandom(vanzari)
         elif optiune == "x":
-            break        
+            break
+
+        if optiune in ["1","2","3","4","5", "7","r"]:
+            states = states[:index+1]
+            states.append(copy.copy(vanzari))
+            index = len(states) - 1
+            vanzari = states[-1]
+
+        if optiune == "s":
+            print("states: [",end="")
+            for version in states:
+                print(len(version), end=", ")
+            print("]")
+                
 
 def printMeniu():
     print("""

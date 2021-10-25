@@ -103,6 +103,6 @@ def toString(vanzare: dict) -> str:
         str: Vanzarea ca string
     """
     return  f"{'Id: ' + getId(vanzare):<10} {'Titlu: ' + getTitlu(vanzare):<45} {'Gen: ' + getGen(vanzare):<23}"\
-            f"{'Pret: ' + str(getPret(vanzare)):<13} Reducere: {getReducere(vanzare)}"
+            f"{'Pret: ' + str(round(getPret(vanzare), 2)):<13} Reducere: {getReducere(vanzare)}"
 
 
