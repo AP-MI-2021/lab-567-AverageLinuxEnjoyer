@@ -12,13 +12,7 @@ def creeazaVanzare(id: str, titlu: str, gen: str, pret: float, reducere: str) ->
     Returns:
         dict: Dictionarul returnat
     """
-    return {
-        "id": id,
-        "titlu": titlu,
-        "gen": gen,
-        "pret": pret,
-        "reducere": reducere
-    }
+    return [id,titlu, gen, pret, reducere]
 
 def getId(vanzare: dict) -> str:
     """Returneaza id-ul unei vanzari
@@ -29,7 +23,7 @@ def getId(vanzare: dict) -> str:
     Returns:
         str: Id-ul returnat
     """
-    return vanzare["id"]
+    return vanzare[0]
 
 def getTitlu(vanzare: dict) -> str:
     """Returneaza titlul unei vanzari
@@ -40,7 +34,7 @@ def getTitlu(vanzare: dict) -> str:
     Returns:
         str: Titlul returnat
     """
-    return vanzare["titlu"]
+    return vanzare[1]
 
 def getGen(vanzare: dict) -> str:
     """Returneaza genul unei vanzari
@@ -51,7 +45,7 @@ def getGen(vanzare: dict) -> str:
     Returns:
         str: Genul returnat
     """
-    return vanzare["gen"]
+    return vanzare[2]
 
 def setGen(vanzare: dict, gen_nou: str):
     """Modifica genul unei vanzari
@@ -60,7 +54,7 @@ def setGen(vanzare: dict, gen_nou: str):
         vanzare (dict): Vanzarea al carui gen e modificat
         gen_nou (str): Noul gen
     """
-    vanzare["gen"] = gen_nou
+    vanzare[2] = gen_nou
 
 def getPret(vanzare: dict) -> float:
     """Returneaza pretul unei vanzari
@@ -71,7 +65,7 @@ def getPret(vanzare: dict) -> float:
     Returns:
         float: Pretul returnat
     """
-    return vanzare["pret"]
+    return vanzare[3]
 
 def setPret(vanzare: dict, pret_nou: float):
     """Modifica pretul unei vanzari
@@ -80,7 +74,7 @@ def setPret(vanzare: dict, pret_nou: float):
         vanzare (dict): Vanzarea al carui pret e modificat
         pret_nou (float): Noul pret
     """
-    vanzare["pret"] = pret_nou
+    vanzare[3] = pret_nou
 
 def getReducere(vanzare: dict) -> str:
     """Returneaza tipul de reducere al unei vanzari
@@ -91,7 +85,7 @@ def getReducere(vanzare: dict) -> str:
     Returns:
         str: Tipul de reducere returnat
     """
-    return vanzare["reducere"]
+    return vanzare[4]
 
 def toString(vanzare: dict) -> str:
     """Returneaza dictionarul cu vanzarea convertit in string
