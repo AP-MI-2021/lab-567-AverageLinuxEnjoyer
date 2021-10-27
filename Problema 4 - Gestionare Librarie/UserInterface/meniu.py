@@ -1,5 +1,6 @@
 from UserInterface.meniuCRUD import meniuAdaugareVanzare, meniuStergereVanzare, meniuModificareVanzare
 from UserInterface.colors import Colors
+from UserInterface.exceptionDecorator import valueErrorHandler
 from Domain.vanzare import toString
 from Logic.aplicareDiscount import aplicareDiscount
 from Logic.modificareGen import modificareGen
@@ -26,7 +27,7 @@ def afisareTitluriDistinctePerGen(vanzari: list):
     for gen, nr_titluri in perechi:
         print(f"{gen}: {nr_titluri}")
 
-
+@valueErrorHandler
 def meniuAdaugareVanzariRandom(vanzari: list) -> list:
     nr = int(input("Cate vanzari random sa fie adaugate? "))
     return adaugareVanzariRandom(nr, vanzari)
@@ -89,23 +90,23 @@ def runMenu(vanzari: list):
                 
 
 def printMeniu():
-    c = Colors.OKCYAN
-    e = Colors.ENDC
+    c = Colors.CYAN
+    n = Colors.NORMAL
 
     print(f"""
-    {c}(0){e}  Adaugare vanzare.
-    {c}(1){e}  Stergere vanzare.
-    {c}(2){e}  Modificare vanzare.
-    {c}(3){e}  Aplicare discount tuturor vanzarilor. (5% pentru silver, 10% pentru gold)
-    {c}(4){e}  Modificarea genului pentru un titlu dat.
-    {c}(5){e}  Determinarea pretului minim pentru fiecare gen.
-    {c}(6){e}  Ordonarea crescatoare a vanzarilor, dupa pret.
-    {c}(7){e}  Afisarea numarului de titluri distincte pentru fiecare gen.
+    {c}(0){n}  Adaugare vanzare.
+    {c}(1){n}  Stergere vanzare.
+    {c}(2){n}  Modificare vanzare.
+    {c}(3){n}  Aplicare discount tuturor vanzarilor. (5% pentru silver, 10% pentru gold)
+    {c}(4){n}  Modificarea genului pentru un titlu dat.
+    {c}(5){n}  Determinarea pretului minim pentru fiecare gen.
+    {c}(6){n}  Ordonarea crescatoare a vanzarilor, dupa pret.
+    {c}(7){n}  Afisarea numarului de titluri distincte pentru fiecare gen.
 
-    {c}(8){e}  Undo
-    {c}(9){e}  Redo
+    {c}(8){n}  Undo
+    {c}(9){n}  Redo
 
-    {c}(a){e}  Afisarea tututor vanzarilor
-    {c}(r){e}  Adaugare vanzari random la lista. (ca sa va usurez viata)
-    {c}(x){e}  Iesire 
+    {c}(a){n}  Afisarea tututor vanzarilor
+    {c}(r){n}  Adaugare vanzari random la lista. (ca sa va usurez viata)
+    {c}(x){n}  Iesire 
     """)

@@ -14,6 +14,3 @@ def testAplicareDiscount():
     assert getPret(getById("1", vanzari)) == 28.5
     assert getPret(getById("2", vanzari)) == 31.5
     assert getPret(getById("3", vanzari)) == 13.99
-
-
-    
