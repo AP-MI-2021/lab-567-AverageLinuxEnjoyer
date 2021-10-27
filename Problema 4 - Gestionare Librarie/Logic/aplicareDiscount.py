@@ -1,4 +1,5 @@
-from Domain.vanzare import getReducere, getPret, setPret
+from Domain.vanzare import getReducere, getPret, setPret, getGen, getId, getTitlu
+from Logic.CRUD import adaugareVanzare
 
 def aplicareDiscount(vanzari: list) -> list:
     """Aplica un discount de 5% si 10% pentru vanzarile de tip silver, respectiv gold
@@ -19,4 +20,6 @@ def aplicareDiscount(vanzari: list) -> list:
         else:
             pret_nou = getPret(vanzare)
 
-        setPret(vanzare, pret_nou)
+        lista_noua = adaugareVanzare(getId(vanzare), getTitlu(vanzare), getGen(vanzare), pret_nou, getReducere(vanzare), lista_noua)
+        
+    return lista_noua

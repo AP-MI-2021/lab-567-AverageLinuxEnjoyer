@@ -9,7 +9,7 @@ def testAplicareDiscount():
     vanzari = adaugareVanzare("2", "Harry Potter", "Fictiune", 35.0, "gold", vanzari)
     vanzari = adaugareVanzare("3", "Moara cu noroc", "Actiune", 13.99, "none", vanzari)
 
-    aplicareDiscount(vanzari)
+    vanzari = aplicareDiscount(vanzari)
 
     assert getPret(getById("1", vanzari)) == 28.5
     assert getPret(getById("2", vanzari)) == 31.5

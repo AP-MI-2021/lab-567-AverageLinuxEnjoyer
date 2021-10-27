@@ -1,4 +1,5 @@
 from UserInterface.meniuCRUD import meniuAdaugareVanzare, meniuStergereVanzare, meniuModificareVanzare
+from UserInterface.colors import Colors
 from Domain.vanzare import toString
 from Logic.aplicareDiscount import aplicareDiscount
 from Logic.modificareGen import modificareGen
@@ -8,19 +9,23 @@ from Logic.titluriDistincte import titluriDistinctePerGen
 from Logic.adaugareVanzariRandom import adaugareVanzariRandom
 import copy
 
+
 def afisareaTututorVanzarilor(vanzari: list):
     for vanzare in vanzari:
         print(toString(vanzare))
+
 
 def afisarePretMinimPeGen(vanzari: list):
     preturi = pretMinimGen(vanzari)
     for gen, pret in preturi.items():
         print(f"Cel mai mic pret pentru genul {gen} este {pret}.")
 
+
 def afisareTitluriDistinctePerGen(vanzari: list):
     perechi = titluriDistinctePerGen(vanzari)
     for gen, nr_titluri in perechi:
         print(f"{gen}: {nr_titluri}")
+
 
 def meniuAdaugareVanzariRandom(vanzari: list) -> list:
     nr = int(input("Cate vanzari random sa fie adaugate? "))
@@ -32,37 +37,39 @@ def meniuModificareGen(vanzari: list):
     gen_nou = input("Care este noul gen? ")
     modificareGen(titlu, gen_nou, vanzari)
 
+
 def runMenu(vanzari: list):
 
     states = [[]]
+    vanzari = []
     index = 0
 
     while True:
         printMeniu()
         optiune = input("Optiune: ")
 
-        if optiune == "1":
+        if optiune == "0":
             vanzari = meniuAdaugareVanzare(vanzari)
-        elif optiune == "2":
+        elif optiune == "1":
             vanzari = meniuStergereVanzare(vanzari)
-        elif optiune == "3":
+        elif optiune == "2":
             vanzari = meniuModificareVanzare(vanzari)
+        elif optiune == "3":
+            vanzari = aplicareDiscount(vanzari)
         elif optiune == "4":
-            aplicareDiscount(vanzari)
-        elif optiune == "5":
             meniuModificareGen(vanzari)
-        elif optiune == "6":
+        elif optiune == "5":
             afisarePretMinimPeGen(vanzari)
-        elif optiune == "7":
+        elif optiune == "6":
             vanzari = ordonareVanzari(vanzari)
-        elif optiune == "8":
+        elif optiune == "7":
             afisareTitluriDistinctePerGen(vanzari)
 
-        elif optiune == "9":  # Undo
+        elif optiune == "8":  # Undo
             if index > 0:
                 index -= 1
             vanzari = states[index]
-        elif optiune == "10": # Redo
+        elif optiune == "9": # Redo
             if index < len(states) - 1:
                 index += 1
             vanzari = states[index]
@@ -73,27 +80,32 @@ def runMenu(vanzari: list):
             vanzari = meniuAdaugareVanzariRandom(vanzari)
         elif optiune == "x":
             break
-
+        
         if optiune in ["1","2","3","4","5", "7","r"]:
             states = states[:index+1]
-            states.append(copy.copy(vanzari))
+            states.append(copy.deepcopy(vanzari))
             index = len(states) - 1
             vanzari = states[-1]
                 
 
 def printMeniu():
-    print("""
-    (1)  Adaugare vanzare.
-    (2)  Stergere vanzare.
-    (3)  Modificare vanzare.
-    (4)  Aplicare discount tuturor vanzarilor. (5% pentru silver, 10% pentru gold)
-    (5)  Modificarea genului pentru un titlu dat.
-    (6)  Determinarea pretului minim pentru fiecare gen.
-    (7)  Ordonarea crescatoare a vanzarilor, dupa pret.
-    (8)  Afisarea numarului de titluri distincte pentru fiecare gen.
-    (9)  Undo
-    (10) Redo
-    (a)  Afisarea tututor vanzarilor
-    (r)  Adaugare vanzari random la lista. (ca sa va usurez viata)
-    (x)  Iesire 
+    c = Colors.OKCYAN
+    e = Colors.ENDC
+
+    print(f"""
+    {c}(0){e}  Adaugare vanzare.
+    {c}(1){e}  Stergere vanzare.
+    {c}(2){e}  Modificare vanzare.
+    {c}(3){e}  Aplicare discount tuturor vanzarilor. (5% pentru silver, 10% pentru gold)
+    {c}(4){e}  Modificarea genului pentru un titlu dat.
+    {c}(5){e}  Determinarea pretului minim pentru fiecare gen.
+    {c}(6){e}  Ordonarea crescatoare a vanzarilor, dupa pret.
+    {c}(7){e}  Afisarea numarului de titluri distincte pentru fiecare gen.
+
+    {c}(8){e}  Undo
+    {c}(9){e}  Redo
+
+    {c}(a){e}  Afisarea tututor vanzarilor
+    {c}(r){e}  Adaugare vanzari random la lista. (ca sa va usurez viata)
+    {c}(x){e}  Iesire 
     """)
