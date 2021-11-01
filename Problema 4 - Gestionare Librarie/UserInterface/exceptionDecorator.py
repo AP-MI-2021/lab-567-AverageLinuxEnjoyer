@@ -10,9 +10,9 @@ def valueErrorHandler(function: Callable) -> Callable:
     Returns:
         Callable: Functia care encapsuleaza functia data ca parametru
     """
-    def wrapper(vanzari: list):
+    def wrapper(vanzari: list, *args):
         try:
-            return function(vanzari)
+            return function(vanzari, *args)
         except ValueError as ve:
             print("Error: ", ve)
             

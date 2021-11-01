@@ -29,9 +29,9 @@ def afisareTitluriDistinctePerGen(vanzari: list):
 @valueErrorHandler
 def meniuAdaugareVanzariRandom(vanzari: list) -> list:
     nr = int(input("Cate vanzari random sa fie adaugate? "))
-    
+
     print(f"Au fost adaugate {nr} vanzari random.")
-    
+
     return adaugareVanzariRandom(nr, vanzari)
 
 
@@ -47,7 +47,6 @@ def meniuModificareGen(vanzari: list):
 def runMenu(vanzari: list):
 
     states = [[]]
-    vanzari = []
     index = 0
 
     while True:
