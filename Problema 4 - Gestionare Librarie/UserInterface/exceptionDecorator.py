@@ -16,7 +16,7 @@ def valueErrorHandler(function: Callable) -> Callable:
         except ValueError as ve:
             print("Error: ", ve)
             
-        return vanzariz
+        return vanzari
     
     return wrapper
         
