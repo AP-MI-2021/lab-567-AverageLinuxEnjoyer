@@ -1,5 +1,4 @@
 from UserInterface.meniuCRUD import meniuAdaugareVanzare, meniuStergereVanzare, meniuModificareVanzare
-from UserInterface.colors import Colors
 from UserInterface.exceptionDecorator import valueErrorHandler
 from Domain.vanzare import toString
 from Logic.aplicareDiscount import aplicareDiscount
@@ -30,12 +29,18 @@ def afisareTitluriDistinctePerGen(vanzari: list):
 @valueErrorHandler
 def meniuAdaugareVanzariRandom(vanzari: list) -> list:
     nr = int(input("Cate vanzari random sa fie adaugate? "))
+    
+    print(f"Au fost adaugate {nr} vanzari random.")
+    
     return adaugareVanzariRandom(nr, vanzari)
 
 
 def meniuModificareGen(vanzari: list):
     titlu = input("Carei carti ii va fi schimbat genul? ")
     gen_nou = input("Care este noul gen? ")
+    
+    print("Genul cartii a fost modificat.")
+    
     modificareGen(titlu, gen_nou, vanzari)
 
 
@@ -57,16 +62,18 @@ def runMenu(vanzari: list):
             vanzari = meniuModificareVanzare(vanzari)
         elif optiune == "3":
             vanzari = aplicareDiscount(vanzari)
+            print("Discount aplicat.")
         elif optiune == "4":
             meniuModificareGen(vanzari)
         elif optiune == "5":
             afisarePretMinimPeGen(vanzari)
         elif optiune == "6":
             vanzari = ordonareVanzari(vanzari)
+            print("Vanzarile au fost ordonate.")
         elif optiune == "7":
             afisareTitluriDistinctePerGen(vanzari)
 
-        elif optiune == "8":  # Undo
+        elif optiune == "8": # Undo
             if index > 0:
                 index -= 1
             vanzari = states[index]
@@ -87,11 +94,15 @@ def runMenu(vanzari: list):
             states.append(copy.deepcopy(vanzari))
             index = len(states) - 1
             vanzari = states[-1]
+            
+        warning_color = "\033[93m"
+        normal_color = "\033[0m"
+        input(f"{warning_color}Apasati ENTER pentru a continua...{normal_color}")
                 
 
 def printMeniu():
-    c = Colors.CYAN
-    n = Colors.NORMAL
+    c = '\033[96m'
+    n = '\033[0m'
 
     print(f"""
     {c}(0){n}  Adaugare vanzare.

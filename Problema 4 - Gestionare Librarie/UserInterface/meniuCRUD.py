@@ -10,11 +10,15 @@ def meniuAdaugareVanzare(vanzari: list):
     pret = float(input("Pretul cartii: "))
     reducere = input("Tipul de reducere (none, silver, gold): ")
 
+    print("Vanzare adaugata.")
+
     return adaugareVanzare(id, titlu, gen, pret, reducere, vanzari)
 
 
 def meniuStergereVanzare(vanzari: list):
     id = input("Id vanzare stearsa: ")
+
+    print("Vanzare stearsa.")
 
     return stergereVanzare(id, vanzari)
 
@@ -26,6 +30,7 @@ def meniuModificareVanzare(vanzari: list):
     gen = input("Noul gen al cartii: ")
     pret = float(input("Noul pret al cartii: "))
     reducere = input("Noul tip de reducere (none, silver, gold): ")
+    
+    print("Vanzare modificata.")
+    
     return modificareVanzare(id, titlu, gen, pret, reducere, vanzari)
-
-    return vanzari

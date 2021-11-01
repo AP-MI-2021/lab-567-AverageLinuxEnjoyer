@@ -43,7 +43,6 @@ def adaugareVanzariRandom(nr: int, vanzari: list) -> list:
 
     adaugate = []
     iduri_folosite = [int(getId(vanzare)) for vanzare in vanzari]
-    print("iduri folosite:", iduri_folosite)
     id_nou = 1
 
     for i in range(nr):
